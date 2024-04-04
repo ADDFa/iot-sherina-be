@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId("driver_id")->constrained("drivers");
             $table->integer("blink_count");
-            $table->float("confidence");
             $table->enum("eye_status", ["Terbuka", "Tertutup"]);
             $table->enum("state_status", ["Lelah", "Normal"]);
+            $table->float("spO2");
+            $table->float("bpm");
+            $table->string("bpm_status");
             $table->bigInteger("session");
             $table->timestamps();
         });

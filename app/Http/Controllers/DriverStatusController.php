@@ -84,7 +84,6 @@ class DriverStatusController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "blink_count"   => "required|integer",
-            "confidence"    => "required|numeric",
             "eye_status"    => [
                 "required",
                 Rule::in(["Terbuka", "Tertutup"])
@@ -92,7 +91,10 @@ class DriverStatusController extends Controller
             "state_status"  => [
                 "required",
                 Rule::in(["Lelah", "Normal"])
-            ]
+            ],
+            "spO2"  => "required|numeric",
+            "bpm"   => "required|numeric",
+            "bpm_status"    => "required|string"
         ]);
         if ($validator->fails()) return Response::errors($validator);
 
